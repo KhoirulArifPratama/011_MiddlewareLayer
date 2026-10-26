@@ -212,3 +212,13 @@ app.delete(
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)
 })
+
+// ROUTE TIDAK DITEMUKAN
+
+app.use((req, res) => {
+    return errorResponse(
+        res,
+        'Endpoint tidak ditemukan',
+        404
+    )
+})
