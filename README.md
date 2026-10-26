@@ -1,110 +1,22 @@
-# 011 - Middleware Layer
+# SS RUN DI BROWSER 
 
-REST API sederhana menggunakan **Express.js** dan **PostgreSQL** yang mendemonstrasikan penggunaan **Middleware Layer** pada Web Service.
+<img width="1365" height="767" alt="Screenshot 2026-10-26 110457" src="https://github.com/user-attachments/assets/bc1bf2cf-ccaa-4fdd-9a0f-fa3a6bcad0cd" />
 
-## Fitur
+# SS TEST DI POST POSTMAN
 
-- **Middleware Logging** – Mencatat setiap request masuk (method, URL, status, durasi)
-- **Middleware Validasi Body** – Validasi input menggunakan Joi sebelum masuk ke handler
-- **Middleware Validasi Parameter** – Validasi parameter URL (seperti `:id`)
-- **Response Envelope** – Format respons yang konsisten (sukses & error)
-- **CRUD Biodata Mahasiswa** – Operasi Create, Read, Update, Delete
+<img width="1365" height="767" alt="Screenshot 2026-10-26 110528" src="https://github.com/user-attachments/assets/cc414dd6-ecbc-48ed-88e5-65f6309cf4f6" />
 
-## Teknologi
 
-| Teknologi | Kegunaan |
-|-----------|----------|
-| Node.js | Runtime JavaScript |
-| Express.js v5 | Framework web server |
-| PostgreSQL | Database relasional |
-| node-postgres (pg) | Driver koneksi ke PostgreSQL |
-| Joi | Validasi skema input |
+# SS TEST DI PUT POSTMAN
 
-## Struktur Database
+<img width="1365" height="767" alt="Screenshot 2026-10-26 110617" src="https://github.com/user-attachments/assets/0e79578c-5572-4cd8-a5a8-a114f56ff8f9" />
 
-```sql
-CREATE TABLE biodata (
-  id    SERIAL PRIMARY KEY,
-  nama  VARCHAR(100) NOT NULL,
-  nim   VARCHAR(20)  NOT NULL,
-  kelas VARCHAR(20)  NOT NULL
-);
-```
+# SS TEST DI DELETE POSTMAN
 
-## Endpoint API
+<img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/203149ef-778a-4678-b06f-3315620fd1cf" />
 
-| Method | Endpoint        | Deskripsi               |
-|--------|-----------------|-------------------------|
-| GET    | `/`             | Ambil semua data biodata |
-| POST   | `/biodata`      | Tambah data biodata baru |
-| PUT    | `/biodata/:id`  | Update data biodata      |
-| DELETE | `/biodata/:id`  | Hapus data biodata       |
+# SS TEST DI GET POSTMAN
 
-## Cara Menjalankan
+<img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/5449a73d-7ba7-4c1e-849b-b613839c58ed" />
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
 
-2. Sesuaikan konfigurasi database di `index.js`:
-   ```js
-   const pool = new Pool({
-     user: 'postgres',
-     host: 'localhost',
-     database: 'mahasiswa',
-     password: 'password_anda',
-     port: 5432,
-   })
-   ```
-
-3. Jalankan server:
-   ```bash
-   npm start
-   ```
-
-Server berjalan di `http://localhost:3000`
-
-## Contoh Request
-
-### Tambah Biodata (POST)
-```json
-POST /biodata
-{
-  "nama": "Budi Santoso",
-  "nim": "12345678",
-  "kelas": "TI-3A"
-}
-```
-
-### Update Biodata (PUT)
-```json
-PUT /biodata/1
-{
-  "nama": "Budi Santoso",
-  "nim": "12345678",
-  "kelas": "TI-3B"
-}
-```
-
-## Format Respons
-
-### Sukses
-```json
-{
-  "success": true,
-  "message": "Data berhasil diambil",
-  "data": [...],
-  "error": null
-}
-```
-
-### Error
-```json
-{
-  "success": false,
-  "message": "Validasi input gagal",
-  "data": null,
-  "error": [{ "field": "nama", "message": "\"nama\" is required" }]
-}
-```
